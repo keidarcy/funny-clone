@@ -1,1 +1,1 @@
-https://keidarcy.github.io/snake-vanilla-js/
+ https://keidarcy.github.io/funny-clone/

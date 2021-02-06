@@ -22,6 +22,7 @@ body {
   display: inline-flex;
   overflow: hidden;
   transform: translateX(0);
+  transition: transform 0.3s ease-out;
   cursor: grab;
 }
 
@@ -39,7 +40,7 @@ body {
 .slider img {
   max-width: 100%;
   max-height: 60%;
-  transition: transfrom 0.3s ease-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .slider h2 {

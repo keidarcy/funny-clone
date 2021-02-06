@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>snake</title>
-  <style>
-    #canvas {
-      background-color: lightpink;
-    }
-    body{
-      display: flex;  
-      justify-content: center;
-      align-items: center;
-      height: 90vh;
-    }
-  </style>
+  <title>Netflix Japan - Watch TV Shows Online, Watch Movies Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" rel="stylesheet"/>
 </head>
 <body>
+    <header class="showcase box">
+      <div class="showcase-top">
+        <img alt="Netflix" src="./img/logo.png"/>
+        <a class="btn btn-rounded" href="https://github.com/keidarcy">Sign In</a>
+      </div>
+      <div class="showcase-content">
+        <h1>Unlimited movies, TV shows, and anime.</h1>
+        <h5>Watch anywhere. Cancel anytime</h5>
+        <p>Ready to watch? Enter your email to create or restart your membership.</p>
+        <div>
+          <input autocomplete="email" maxlength="50" minlength="5" name="email" tabindex="0" type="email" value="">
+          <label>Try press arrow key</label>
+          <a class="btn btn-xl" href="https://github.com/keidarcy">
+            GET STARTED
+            <i class="fas fa-chevron-right btn-icon"></i>
+          </a>
+        </div>
+      </div>
+    </header>
     <canvas id="canvas" width="300" height="300"></canvas>
-  <script type="module" src="script.js"></script>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>

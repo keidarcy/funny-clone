@@ -8,10 +8,6 @@ let isDragging = false,
   animationID = 0,
   currentIndex = 0;
 
-const touchStart = () => {};
-const touchEnd = () => {};
-const touchMove = () => {};
-
 sliders.forEach((slide, index) => {
   const image = slide.querySelector('img');
   image.addEventListener('dragstart', (e) => e.preventDefault());
@@ -19,8 +15,66 @@ sliders.forEach((slide, index) => {
   slide.addEventListener('touchstart', touchStart(index));
   slide.addEventListener('touchend', touchEnd);
   slide.addEventListener('touchmove', touchMove);
+
   slide.addEventListener('mousedown', touchStart(index));
   slide.addEventListener('mouseup', touchEnd);
   slide.addEventListener('mouseleave', touchEnd);
   slide.addEventListener('mousemove', touchMove);
 });
+
+window.oncontextmenu = function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  return false;
+};
+
+function touchStart(index) {
+  return function (event) {
+    currentIndex = index;
+    startPos = getPosition(event);
+    isDragging = true;
+    animationID = requestAnimationFrame(animation);
+    slider.classList.add('grabbing');
+  };
+}
+
+function touchEnd() {
+  isDragging = false;
+  cancelAnimationFrame(animationID);
+  const movedBy = currentTranslate - prevTranslate;
+  if (movedBy < -100 && currentIndex < sliders.length - 1) {
+    currentIndex += 1;
+  }
+  if (movedBy > 100 && currentIndex > 0) {
+    currentIndex -= 1;
+  }
+  setPositionByIndex();
+  console.log({ animationID });
+  slider.classList.remove('grabbing');
+}
+
+function touchMove(event) {
+  if (isDragging) {
+    const currentPosition = getPosition(event);
+    currentTranslate = prevTranslate + currentPosition - startPos;
+  }
+}
+
+function getPosition(event) {
+  return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+}
+
+function animation() {
+  setSliderPosition();
+  if (isDragging) requestAnimationFrame(animation);
+}
+
+function setSliderPosition() {
+  slider.style.transform = `translateX(${currentTranslate}px)`;
+}
+
+function setPositionByIndex() {
+  currentTranslate = currentIndex * -window.innerWidth;
+  prevTranslate = currentTranslate;
+  setSliderPosition();
+}

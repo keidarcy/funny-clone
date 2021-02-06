@@ -23,12 +23,11 @@ body {
   overflow: hidden;
   transform: translateX(0);
   cursor: grab;
-  transition: transfrom 0.3s ease-out;
 }
 
 .slider {
   max-height: 100vh;
-  width: 100vh;
+  width: 100vw;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -40,6 +39,7 @@ body {
 .slider img {
   max-width: 100%;
   max-height: 60%;
+  transition: transfrom 0.3s ease-out;
 }
 
 .slider h2 {

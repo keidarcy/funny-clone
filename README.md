@@ -1,1 +1,1 @@
- https://keidarcy.github.io/funny-clone/
+https://keidarcy.github.io/js-theater/

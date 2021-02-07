@@ -190,3 +190,47 @@ img {
   transform: translate(-50%, -50%);
   background-color: lightpink;
 }
+
+.card {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  padding: 10rem;
+}
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #000;
+}
+
+.card-wrapper > p {
+  color: #fff;
+  margin-left: 1rem;
+  font-size: 2rem;
+}
+.card-wrapper > p:hover {
+  text-decoration: underline;
+}
+
+.card-box {
+  width: 10rem;
+  height: 10rem;
+  background-color: #f0db4f;
+  position: relative;
+}
+
+.card-box > p {
+  font-size: 4rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  transform: translateX(-50%);
+}
+.card-box > p:hover {
+  text-decoration: underline;
+}

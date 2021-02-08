@@ -1,5 +1,10 @@
 :root {
   --primary-color: #e50914;
+  --js-color: #f9dc5c;
+}
+
+*::selection {
+  background-color: var(--js-color);
 }
 
 * {
@@ -220,7 +225,7 @@ img {
 .card-box {
   width: 10rem;
   height: 10rem;
-  background-color: #f0db4f;
+  background-color: var(--js-color);
   position: relative;
 }
 

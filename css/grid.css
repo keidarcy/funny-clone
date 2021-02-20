@@ -68,3 +68,119 @@
 .box-wrapper > div:nth-child(odd) {
   background-color: lightpink;
 }
+
+.container {
+  display: grid;
+  /* grid-template-columns: 100px auto; */
+  grid-template-columns: repeat(4, auto);
+  /* grid-template-rows: 110px 210px auto; */
+  width: 500px;
+  height: 400px;
+  margin: 100px auto;
+  background-color: #eee;
+  grid-gap: 10px;
+}
+
+.item {
+  border: 5px solid red;
+}
+
+.item:first-child {
+  background-color: red;
+  /* grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4; */
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
+.item:last-child {
+  background-color: lightcoral;
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 150px 100px auto;
+  grid-template-rows: 100px auto 100px;
+  grid-template-areas:
+    'header header header'
+    'nav aside main'
+    'footer footer footer';
+  grid-row-gap: 10px;
+  grid-column-gap: 20px;
+}
+header {
+  grid-area: header;
+  background-color: lightgreen;
+}
+
+nav {
+  grid-area: nav;
+  background-color: lightcoral;
+}
+main {
+  grid-area: main;
+  background-color: lightseagreen;
+}
+
+aside {
+  grid-area: aside;
+  background-color: lightskyblue;
+}
+
+footer {
+  grid-area: footer;
+  background-color: lightslategray;
+}
+
+.containerX {
+  display: grid;
+  grid-template-columns: 100px 2fr 1fr;
+  grid-template-rows: repeat(3, 100px);
+  background-color: #f3f3f3;
+  grid-gap: 10px;
+}
+
+.containerX > div {
+  background-color: lightblue;
+}
+
+.containerY {
+  display: grid;
+  grid-template-columns: 100px 10% 1fr;
+  background-color: lightseagreen;
+  grid-gap: 20px;
+}
+
+.containerY > div {
+  background-color: lightcoral;
+}
+
+.containerY > div:first-child {
+  background-color: transparent;
+  grid-column: 3;
+  grid-row: 2 / span 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+}
+
+.containerY > div:first-child > div {
+  background-color: lightyellow;
+}
+
+.containerZ {
+  display: grid;
+  background-color: lightblue;
+  grid-gap: 1em;
+  /* grid-template-columns: repeat(auto-fill, 100px); */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.containerZ > div {
+  background-color: lightgreen;
+  height: 100px;
+}

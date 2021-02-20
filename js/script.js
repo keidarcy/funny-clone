@@ -14,7 +14,6 @@ const scale = 10;
     food.draw();
     snake.update();
     snake.draw();
-    console.log(snake.x, food.x, snake.y, food.y);
     if (snake.x === food.x && snake.y === food.y) {
       snake.total++;
       food.locate();

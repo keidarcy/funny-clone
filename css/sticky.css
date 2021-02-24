@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.sec {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: multiply;
+  scroll-snap-align: center;
+}
+
+h3 {
+  color: #fff;
+  font-size: 10vw;
+  text-align: center;
+  margin: 0 50px;
+}
+
+.sec:nth-child(1) {
+  background: #0ff url(https://source.unsplash.com/random/800x600);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.sec:nth-child(2) {
+  background: #0f0 url(https://source.unsplash.com/random/800x600);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.sec:nth-child(3) {
+  background: #00f url(https://source.unsplash.com/random/800x600);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.sec:nth-child(4) {
+  background: #f00 url(https://source.unsplash.com/random/800x600);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.sec:nth-child(5) {
+  background: #ff0 url(https://source.unsplash.com/random/800x600);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.sec:nth-child(6) {
+  background: #f0f url(https://source.unsplash.com/random/800x600);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.sec:nth-child(7) {
+  background: rgb(245, 143, 11) url(https://source.unsplash.com/random/800x600);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+.content h2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.content h2 span {
+  height: 100vh;
+  line-height: 100vh;
+  position: sticky;
+  top: 0;
+  color: #fff;
+  font-size: 14vh;
+  margin-top: calc(100vh * var(--i));
+}

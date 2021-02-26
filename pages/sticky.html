@@ -31,5 +31,14 @@
         </div>
       </div>
     </section>
+    <script>
+      const cb = (res) => {
+        console.log({res})
+      }
+    </script>
+    <script src="https://jsonplaceholder.typicode.com/todos?jsoncallback=cb"></script>
+    <script>
+      console.log({cb})
+    </script>
   </body>
 </html>

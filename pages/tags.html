@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAGS</title>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>
+        <div>
+          <label>Favorites</label>
+        </div>
+      </legend>
+      <div>
+        <label for="color">Color</label>
+      </div>
+      <input type="text" list="color-list">
+      <datalist id="color-list">
+        <option value="Red">
+        <option value="Green">
+        <option value="Blue">
+        <option value="Yellow">
+        <option value="Black">
+      </datalist>
+      <div>
+        <label for="Color2">color</label>
+        <div>
+          <input type="color">
+        </div>
+        <div>
+          <input type="time">
+        </div>
+        <div>
+          <progress></progress>
+          <progress value="50" max="100"></progress>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+    <div>
+      <p>H<sub>2</sub>O</p>
+      <p>X<sup>2</sup></p>
+    </div>
+    <picture>
+      <source media="(min-width:650px)" srcset="img_pink_flowers.jpg">
+      <source media="(min-width:465px)" srcset="img_white_flower.jpg">
+      <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
+    </picture>
+    <template>
+      <h5>HELLO THIS IS TEMPLATE</h5>
+    </template>
+    <script>
+      const template = document.querySelector('template')
+      const content = template.content.cloneNode(true)
+      document.body.append(content)
+    </script>
+</body>
+</html>

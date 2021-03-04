@@ -8,6 +8,250 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
   <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" rel="stylesheet"/>
+  <style>
+    :root {
+  --primary-color: #e50914;
+  --js-color: #f9dc5c;
+}
+
+*::selection {
+  background-color: var(--js-color);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #000;
+  color: #999;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #fff;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+
+img {
+  width: 100%;
+}
+
+.box {
+  border-bottom: 0.5rem solid #222222;
+}
+
+.showcase {
+  width: 100%;
+  height: 97vh;
+  position: relative;
+  background: url('../img/bg.jpg') no-repeat center center/cover;
+}
+
+.showcase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: inset 120px 100px 250px #000, inset -120px -100px 250px #000;
+}
+
+.showcase-top {
+  position: relative;
+  height: 90px;
+  z-index: 2;
+}
+
+.showcase-top img {
+  width: 170px;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-10%, -50%);
+}
+
+.showcase-top a {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translate(-10%, -50%);
+}
+
+.showcase-content {
+  position: relative;
+  margin: 10rem auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 9rem;
+  z-index: 2;
+}
+
+.showcase-content h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 1.1;
+  padding: 0 10rem;
+  margin-bottom: 1rem;
+}
+
+.showcase-content h5 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.25;
+  padding: 0 10rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.showcase-content p {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-bottom: 2rem;
+  margin: 0 0 2rem;
+  color: #fff;
+}
+
+.showcase-content div {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.showcase-content input {
+  width: 100%;
+  padding: 0.5rem 1.3rem;
+}
+
+.showcase-content input:focus {
+  outline: none;
+}
+
+.showcase-content label {
+  position: absolute;
+  color: #999;
+  position: absolute;
+  pointer-events: none;
+  left: 2%;
+  top: 40%;
+  transition: 0.2s;
+}
+
+.showcase-content input:focus ~ label {
+  top: 10%;
+  left: 1%;
+  font-size: small;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.5rem 1.3rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.3rem;
+  outline: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-rounded {
+  border-radius: 5px;
+}
+
+.btn-xl {
+  font-size: 2rem;
+  padding: 1.5rem 2.1rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#canvas {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightpink;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  padding: 10rem;
+}
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #000;
+}
+
+.card-wrapper > p {
+  color: #fff;
+  margin-left: 1rem;
+  font-size: 2rem;
+}
+.card-wrapper > p:hover {
+  text-decoration: underline;
+}
+
+.card-box {
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--js-color);
+  position: relative;
+}
+
+.card-box > p {
+  font-size: 4rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  transform: translateX(-50%);
+}
+.card-box > p:hover {
+  text-decoration: underline;
+}
+
+  </style>
 </head>
 <body>
     <header class="showcase box">
@@ -31,55 +275,164 @@
     </header>
     <canvas id="canvas" width="300" height="300"></canvas>
     <section class="card">
-      <a class="card-wrapper" href="/js-theater/pages/slider.html">
+      <a class="card-wrapper" href="/js-theater/pages/slider">
         <div class="card-box">
           <p>SL</p>
         </div>
         <p>Slider</p>
       </a>
-      <a class="card-wrapper" href="/js-theater/pages/grid.html">
+      <a class="card-wrapper" href="/js-theater/pages/grid">
         <div class="card-box">
           <p>GR</p>
         </div>
         <p>grid</p>
       </a>
-      <a class="card-wrapper" href="/js-theater/pages/drag.html">
+      <a class="card-wrapper" href="/js-theater/pages/drag">
         <div class="card-box">
           <p>DR</p>
         </div>
         <p>drag</p>
       </a>
-      <a class="card-wrapper" href="/js-theater/pages/draw.html">
+      <a class="card-wrapper" href="/js-theater/pages/draw">
         <div class="card-box">
           <p>DR</p>
         </div>
         <p>draw</p>
       </a>
-      <a class="card-wrapper" href="/js-theater/pages/scroll.html">
+      <a class="card-wrapper" href="/js-theater/pages/scroll">
         <div class="card-box">
           <p>SC</p>
         </div>
         <p>Scroll</p>
       </a>
-      <a class="card-wrapper" href="/js-theater/pages/dothover.html">
+      <a class="card-wrapper" href="/js-theater/pages/dothover">
         <div class="card-box">
           <p>DH</p>
         </div>
         <p>Dot hover</p>
       </a>
-      <a class="card-wrapper" href="/js-theater/pages/sticky.html">
+      <a class="card-wrapper" href="/js-theater/pages/sticky">
         <div class="card-box">
           <p>ST</p>
         </div>
         <p>Sticky</p>
       </a>
-      <a class="card-wrapper" href="/js-theater/pages/effects.html">
+      <a class="card-wrapper" href="/js-theater/pages/effects">
         <div class="card-box">
           <p>EF</p>
         </div>
         <p>Effects</p>
       </a>
     </section>
-  <script type="module" src="js/script.js"></script>
+  <script>
+    class Snake {
+  constructor(x, y, ctx, scale, canvas) {
+    this.x = x;
+    this.y = y;
+    this.ctx = ctx;
+    this.canvas = canvas;
+    this.scale = scale;
+    this.xSpeed = scale * 1;
+    this.ySpeed = scale * 0;
+    this.total = 0;
+    this.tail = [];
+  }
+
+  draw() {
+    this.ctx.fillStyle = '#ffffff';
+    for (let i = 0; i <= this.tail.length - 1; i++) {
+      this.ctx.fillRect(this.tail[i].x, this.tail[i].y, this.scale, this.scale);
+    }
+  }
+
+  update() {
+    for (let i = 0; i < this.tail.length - 1; i++) {
+      this.tail[i] = this.tail[i + 1];
+    }
+
+    this.tail[this.total] = { x: this.x, y: this.y };
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
+    if (this.x > this.canvas.width) this.x = 0;
+    if (this.y > this.canvas.height) this.y = 0;
+    if (this.x < 0) this.x = this.canvas.width;
+    if (this.y < 0) this.y = this.canvas.height;
+  }
+
+  changeDirection(direction) {
+    switch (direction) {
+      case 'up':
+        this.xSpeed = 0;
+        this.ySpeed = -this.scale * 1;
+        break;
+      case 'down':
+        this.xSpeed = 0;
+        this.ySpeed = this.scale * 1;
+        break;
+      case 'left':
+        this.xSpeed = -this.scale * 1;
+        this.ySpeed = 0;
+        break;
+      case 'right':
+        this.xSpeed = this.scale * 1;
+        this.ySpeed = 0;
+        break;
+    }
+  }
+
+  eat(food) {
+    return;
+  }
+}
+
+class Food {
+  constructor(ctx, scale, canvas) {
+    this.ctx = ctx;
+    this.scale = scale;
+    this.canvas = canvas;
+    this.locate();
+  }
+
+  locate() {
+    this.x =
+      (Math.floor((Math.random() * this.canvas.width) / this.scale - 1) + 1) * this.scale;
+    this.y =
+      (Math.floor((Math.random() * this.canvas.height) / this.scale - 1) + 1) *
+      this.scale;
+  }
+
+  draw() {
+    this.ctx.fillStyle = 'lightgreen';
+    this.ctx.fillRect(this.x, this.y, this.scale, this.scale);
+  }
+}
+
+const canvas = document.querySelector('#canvas');
+const ctx = canvas.getContext('2d');
+
+const scale = 10;
+
+(() => {
+  const snake = new Snake(0, 0, ctx, scale, canvas);
+  const food = new Food(ctx, scale, canvas);
+
+  setInterval(() => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    food.draw();
+    snake.update();
+    snake.draw();
+    if (snake.x === food.x && snake.y === food.y) {
+      snake.total++;
+      food.locate();
+    }
+  }, 100);
+
+  window.addEventListener('keydown', (e) => {
+    const direction = e.key.replace('Arrow', '').toLowerCase();
+    snake.changeDirection(direction);
+  });
+})();
+
+  </script>
 </body>
 </html>

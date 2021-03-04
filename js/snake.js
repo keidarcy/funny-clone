@@ -1,4 +1,4 @@
-export class Snake {
+class Snake {
   constructor(x, y, ctx, scale, canvas) {
     this.x = x;
     this.y = y;
@@ -57,3 +57,51 @@ export class Snake {
     return;
   }
 }
+
+class Food {
+  constructor(ctx, scale, canvas) {
+    this.ctx = ctx;
+    this.scale = scale;
+    this.canvas = canvas;
+    this.locate();
+  }
+
+  locate() {
+    this.x =
+      (Math.floor((Math.random() * this.canvas.width) / this.scale - 1) + 1) * this.scale;
+    this.y =
+      (Math.floor((Math.random() * this.canvas.height) / this.scale - 1) + 1) *
+      this.scale;
+  }
+
+  draw() {
+    this.ctx.fillStyle = 'lightgreen';
+    this.ctx.fillRect(this.x, this.y, this.scale, this.scale);
+  }
+}
+
+const canvas = document.querySelector('#canvas');
+const ctx = canvas.getContext('2d');
+
+const scale = 10;
+
+(() => {
+  const snake = new Snake(0, 0, ctx, scale, canvas);
+  const food = new Food(ctx, scale, canvas);
+
+  setInterval(() => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    food.draw();
+    snake.update();
+    snake.draw();
+    if (snake.x === food.x && snake.y === food.y) {
+      snake.total++;
+      food.locate();
+    }
+  }, 100);
+
+  window.addEventListener('keydown', (e) => {
+    const direction = e.key.replace('Arrow', '').toLowerCase();
+    snake.changeDirection(direction);
+  });
+})();

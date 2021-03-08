@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webworker</title>
+  <style>
+    input {
+      width: 0px;
+      height: 0px;
+      overflow: hidden;
+    }
+
+    input + label {
+      display: inline-block;
+      background-color: #777;
+      font-family: sans-serif;
+      padding: 10px;
+    }
+
+    input:focus + label {
+      outline: 3.5px solid teal;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="file" accept="image/*" name="input1" id="uploader">
+    <label for="uploader">Choose File</label>
+    <button onclick="alert(1)"> hello</button>
+  </div>
+  <br />
+  <br />
+
+  <canvas id="preview"></canvas>
+
+
+  <script type="text/javascript">
+    const $input = document.getElementById('uploader');
+    const $preview = document.getElementById('preview')
+    const previewCtx = $preview.getContext('2d')
+    const worker = new Worker('./worker.js');
+
+    worker.addEventListener('message', (d) => {
+      const imageData = d.data;
+      previewCtx.putImageData(imageData, 0, 0)
+
+    })
+
+    // const fileReader = new FileReader();
+    const image = new Image();
+
+    const applyFilter = () => {
+      // const imageData = previewCtx.getImageData(0,0,image.width, image.height);
+      const imageData = previewCtx.getImageData(0,0,$preview.width, $preview.height);
+      worker.postMessage(imageData, [imageData.data.buffer]);
+      // for (let x = 0; x < image.width; x++){
+      //   for (let y = 0; y < image.height; y++) {
+      //     let index = (x + (y * image.width)) * 4;
+      //     imageData.data[index+3] = 110
+      //   }
+      // }
+      // previewCtx.putImageData(imageData, 0, 0);
+    }
+
+    // image.addEventListener('load', () => {
+    //   $preview.height = image.height;
+    //   $preview.width = image.width;
+    //   previewCtx.drawImage(image, 0, 0);
+    // })
+
+    // fileReader.addEventListener('load', (e) => {
+    //   const base64 = e.target.result;
+    //   image.src = base64;
+    // })
+
+    $input.addEventListener('change', e => {
+      const file = e.target.files[0];
+      createImageBitmap(file)
+        .then(bitmap => {
+          $preview.height = bitmap.height;
+          $preview.width = bitmap.width;
+          previewCtx.drawImage(bitmap, 0, 0);
+          applyFilter()
+        })
+      // fileReader.readAsDataURL(file);
+    })
+  </script>
+</body>
+</html>

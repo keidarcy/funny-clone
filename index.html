@@ -207,12 +207,12 @@ img {
   background-color: lightpink;
 }
 
-.card {
+section.card {
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
+  height: 100vh;
+  display: grid;
+  grid-template-columns:repeat( auto-fit, minmax(400px, 1fr) );
+  grid-gap: 1rem;
   font-family: 'Roboto Mono', monospace;
   padding: 10rem;
 }
@@ -251,6 +251,19 @@ img {
   text-decoration: underline;
 }
 
+@media (max-width: 1068px) {
+  #canvas {
+    display: none;
+  }
+  .btn-xl {
+    width: 200px;
+    font-size: 1em;
+  }
+  .card-wrapper > p {
+    font-size: 1em;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -260,13 +273,13 @@ img {
         <a class="btn btn-rounded" href="https://github.com/keidarcy">Sign In</a>
       </div>
       <div class="showcase-content">
-        <h1>Unlimited movies, TV shows, and anime.</h1>
+        <h1>Unlimited javascript, little toys, and fun.</h1>
         <h5>Watch anywhere. Cancel anytime</h5>
-        <p>Ready to watch? Enter your email to create or restart your membership.</p>
+        <p>Ready to watch? DO not enter the email just scroll down.</p>
         <div>
           <input autocomplete="email" maxlength="50" minlength="5" name="email" tabindex="0" type="email" value="">
-          <label>Try press arrow key</label>
-          <a class="btn btn-xl" href="https://github.com/keidarcy">
+          <label>Try 🐍🐍🐍</label>
+          <a id="start" class="btn btn-xl" href="/#showcase-wrapper">
             GET STARTED
             <i class="fas fa-chevron-right btn-icon"></i>
           </a>
@@ -274,7 +287,7 @@ img {
       </div>
     </header>
     <canvas id="canvas" width="300" height="300"></canvas>
-    <section class="card">
+    <section id="showcase-wrapper" class="card">
       <a class="card-wrapper" href="/js-theater/pages/slider">
         <div class="card-box">
           <p>SL</p>
@@ -285,19 +298,19 @@ img {
         <div class="card-box">
           <p>GR</p>
         </div>
-        <p>grid</p>
+        <p>Grid</p>
       </a>
       <a class="card-wrapper" href="/js-theater/pages/drag">
         <div class="card-box">
           <p>DR</p>
         </div>
-        <p>drag</p>
+        <p>Drag</p>
       </a>
       <a class="card-wrapper" href="/js-theater/pages/draw">
         <div class="card-box">
           <p>DR</p>
         </div>
-        <p>draw</p>
+        <p>Draw</p>
       </a>
       <a class="card-wrapper" href="/js-theater/pages/scroll">
         <div class="card-box">
@@ -319,12 +332,25 @@ img {
       </a>
       <a class="card-wrapper" href="/js-theater/pages/effects">
         <div class="card-box">
-          <p>EF</p>
+          <p>LE</p>
         </div>
-        <p>Effects</p>
+        <p>Loading Effect</p>
+      </a>
+      <a class="card-wrapper" href="/js-theater/pages/effects">
+        <div class="card-box">
+          <p>MP</p>
+        </div>
+        <p>Music Player</p>
+      </a>
+      <a class="card-wrapper" href="/js-theater/pages/effects">
+        <div class="card-box">
+          <p>DC</p>
+        </div>
+        <p>Digital Clock</p>
       </a>
     </section>
   <script>
+    const startBtn = document.querySelector('#start');
     class Snake {
   constructor(x, y, ctx, scale, canvas) {
     this.x = x;
@@ -429,6 +455,11 @@ const scale = 10;
 
   window.addEventListener('keydown', (e) => {
     const direction = e.key.replace('Arrow', '').toLowerCase();
+    if (['ArrowUp', 'ArrowDown'].includes(e.key) ) {
+      e.preventDefault();
+    }
+    console.log(e.key)
+    
     snake.changeDirection(direction);
   });
 })();

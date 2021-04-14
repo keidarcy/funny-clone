@@ -1,80 +1,29 @@
-const slider = document.querySelector('.slider-container');
-const sliders = Array.from(document.querySelectorAll('.slider'));
+const clock = () => {
+  const hour = document.getElementById('hour');
+  const minute = document.getElementById('minute');
+  const seconds = document.getElementById('seconds');
+  const ampm = document.getElementById('ampm');
 
-let isDragging = false,
-  startPos = 0,
-  currentTranslate = 0,
-  prevTranslate = 0,
-  animationID = 0,
-  currentIndex = 0;
+  let h = new Date().getHours();
+  let m = new Date().getMinutes();
+  let s = new Date().getSeconds();
+  let am = 'AM';
 
-sliders.forEach((slide, index) => {
-  const image = slide.querySelector('img');
-  image.addEventListener('dragstart', (e) => e.preventDefault());
+  if (h > 12) {
+    h -= 12;
+    am = 'PM';
+  }
 
-  slide.addEventListener('touchstart', touchStart(index));
-  slide.addEventListener('touchend', touchEnd);
-  slide.addEventListener('touchmove', touchMove);
+  h = h < 10 ? '0' + h : h;
+  m = m < 10 ? '0' + m : m;
+  s = s < 10 ? '0' + s : s;
 
-  slide.addEventListener('mousedown', touchStart(index));
-  slide.addEventListener('mouseup', touchEnd);
-  slide.addEventListener('mouseleave', touchEnd);
-  slide.addEventListener('mousemove', touchMove);
-});
-
-window.oncontextmenu = function (event) {
-  event.preventDefault();
-  event.stopPropagation();
-  return false;
+  hour.innerHTML = h;
+  minute.innerHTML = m;
+  seconds.innerHTML = s;
+  ampm.innerHTML = am;
 };
 
-function touchStart(index) {
-  return function (event) {
-    currentIndex = index;
-    startPos = getPosition(event);
-    isDragging = true;
-    animationID = requestAnimationFrame(animation);
-    slider.classList.add('grabbing');
-  };
-}
+clock();
 
-function touchEnd() {
-  isDragging = false;
-  cancelAnimationFrame(animationID);
-  const movedBy = currentTranslate - prevTranslate;
-  if (movedBy < -100 && currentIndex < sliders.length - 1) {
-    currentIndex += 1;
-  }
-  if (movedBy > 100 && currentIndex > 0) {
-    currentIndex -= 1;
-  }
-  setPositionByIndex();
-  console.log({ animationID });
-  slider.classList.remove('grabbing');
-}
-
-function touchMove(event) {
-  if (isDragging) {
-    const currentPosition = getPosition(event);
-    currentTranslate = prevTranslate + currentPosition - startPos;
-  }
-}
-
-function getPosition(event) {
-  return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-}
-
-function animation() {
-  setSliderPosition();
-  if (isDragging) requestAnimationFrame(animation);
-}
-
-function setSliderPosition() {
-  slider.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function setPositionByIndex() {
-  currentTranslate = currentIndex * -window.innerWidth;
-  prevTranslate = currentTranslate;
-  setSliderPosition();
-}
+setInterval(clock, 1000);
